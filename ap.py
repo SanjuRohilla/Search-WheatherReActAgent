@@ -312,7 +312,7 @@ def create_agent():
         base_url="https://api.groq.com/openai/v1",
         api_key=GROQ_API_KEY,
         temperature=0,
-        max_tokens=1024,
+        max_tokens=900,
         streaming=False,
     )
 
