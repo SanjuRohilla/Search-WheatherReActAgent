@@ -1,103 +1,110 @@
-# Langchain Agent
+# 🎀 Weather & Search ReAct Agent
 
-A minimal LangChain-based agent project built for experimentation and learning. This repository demonstrates how to set up a Python environment, install dependencies, and run a simple agent-driven application using environment-based API keys.
+An AI-powered **ReAct agent** that can search the web, fetch current weather data, and combine information from multiple tools to answer user queries.
 
-## Features
+### 🚀 Live Demo
 
-- Simple LangChain agent scaffold
-- Environment variable support via `.env`
-- Example app entrypoints: `app.py`, `main.py`
-- Notebook research work in `research/agent_demo.ipynb`
+**[Try the AI Agent](https://search-wheatherreactagent.onrender.com/)**
 
-## Technology
+---
 
-- Python 3.11
-- LangChain
-- OpenAI API
-- dotenv for environment configuration
+## ✨ Features
 
-## Architecture
+* 🔎 **Web Search** — retrieves relevant information from the web
+* 🌤️ **Weather Tool** — fetches current weather for a city
+* 🧠 **ReAct Agent** — reasons through a task and decides which tool to use
+* 🔗 **Multi-step Queries** — combines multiple tools to answer complex questions
+* 💬 **Streamlit UI** — simple interactive chat interface
 
-This repository is organized as a small Python agent project:
+---
 
-- `app.py` - Primary application script for launching the agent logic.
-- `main.py` - Secondary entrypoint, typically used for testing or demo execution.
-- `requirements.txt` - Python dependencies required to run the project.
-- `.env` - Local environment variables containing API keys.
-- `research/agent_demo.ipynb` - Jupyter notebook for experimentation and development notes.
+## 🛠️ Tech Stack
 
-The application follows a simple architecture:
+* **Python**
+* **LangChain**
+* **Groq / Qwen**
+* **Tavily Search**
+* **Weatherstack API**
+* **Streamlit**
+* **Render**
 
-1. Load configuration from `.env`.
-2. Initialize the agent and language model client.
-3. Execute the agent workflow through `app.py` or `main.py`.
+---
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.11
-- `conda` or any Python virtual environment manager
-
-### Installation
-
-```bash
-conda create -n langagent python=3.11 -y
-conda activate langagent
-pip install -r requirements.txt
-```
-
-### Configuration
-
-Create a `.env` file at the repository root and add your API keys:
-
-```dotenv
-OPENAI_API_KEY="your-openai-api-key"
-TAVILY_API_KEY="your-tavily-api-key"
-WEATHERSTACK_API_KEY="your-weatherstack-api-key"
-```
-
-> Do not commit your `.env` file or secret keys to source control.
-
-### Run the Project
-
-Use one of the Python entrypoints:
-
-```bash
-python app.py
-```
-
-or
-
-```bash
-python main.py
-```
-
-### Notebook Exploration
-
-Open the research notebook for additional agent demos and experiments:
-
-```bash
-jupyter notebook research/agent_demo.ipynb
-```
-
-## Project Structure
+## ⚙️ How It Works
 
 ```text
-.
-├── .env
-├── README.md
-├── app.py
-├── main.py
-├── requirements.txt
-└── research/
-    └── agent_demo.ipynb
+User Query
+    ↓
+ReAct Agent
+    ↓
+Decides which tool to use
+    ↓
+┌───────────────┬────────────────┐
+│ Web Search    │ Weather Tool   │
+│   (Tavily)    │ (Weatherstack) │
+└───────────────┴────────────────┘
+    ↓
+Combines Results
+    ↓
+Final Answer
 ```
 
-## Contribution
+The agent follows the **ReAct (Reason + Act)** approach, allowing it to dynamically select tools instead of relying only on the language model's knowledge.
 
-Contributions are welcome. If you'd like to improve this repo, open an issue or submit a pull request with enhancements, bug fixes, or documentation improvements.
+---
 
-## License
+## 💡 Example
+
+Try asking:
+
+> Find the capital of the country with the largest land area, find its current weather, and compare its temperature with New Delhi.
+
+The agent can:
+
+1. Search for the country with the largest land area
+2. Identify its capital
+3. Fetch the capital's current weather
+4. Fetch New Delhi's weather
+5. Compare the temperatures
+6. Return the final answer
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file locally:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+TAVILY_API_KEY=your_tavily_api_key
+WEATHERSTACK_API_KEY=your_weatherstack_api_key
+```
+
+**Never commit your `.env` file to GitHub.**
+
+---
+
+## ▶️ Run Locally
+
+```bash
+git clone <your-repository-url>
+cd 01_AiAgent
+
+pip install -r requirements.txt
+
+streamlit run ap.py
+```
+
+---
+
+## 🌐 Live Application
+
+[**Open the deployed AI Agent →**](https://search-wheatherreactagent.onrender.com/)
+
+---
+
+### 👩‍💻 Built with Python + LangChain + ReAct
+
+Made by **Sanju Rohilla**
 
 This project is provided under an open source-friendly license. Add a license file if you want to publish this repository publicly.
